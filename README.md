@@ -15,3 +15,65 @@ A la hora de acceder a la base de datos veremos que se crea una Cuenta por cada 
 
 
 # Mapped Superclass
+- `Nos permite crear clases base, de las cuales nuestras entidades pueden heredar distintas propiedades`
+- `Desde la base de datos, es invisible. Las propiedades heredadas simplemente se copian a la tabla mapeada`
+- `Nos va a permitir evitar la repetición de atributos y métodos que son compartidos por muchas entidades (ID, fechas de alta, etc.)`
+
+Ejemplo:
+
+```
+@MappedSuperclass
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Persona {
+
+		@Id
+		private Long dni;
+		private String nombre;
+
+}
+```
+
+Con esta Clase Persona nuestra clase Empleado, que hereda de la Clase Persona pasa de verse así:
+
+```
+@Entity
+@Table(name="Empleado")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Empleado {
+
+		@Id
+		@GeneratedValue
+		private Long dni;
+
+		@Column(name="nombre")
+		private String nombre;
+
+		@Column(name="company")
+		private String company;
+		
+
+}
+```
+
+A verse así:
+
+´´´
+@Entity
+@Table(name="Empleado")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Empleado extends Persona{
+
+		@Column(name="company")
+		private String company;
+
+}
+´´´
