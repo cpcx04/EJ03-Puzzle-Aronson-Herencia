@@ -63,7 +63,7 @@ public class Empleado {
 
 A verse así:
 
-´´´
+```
 @Entity
 @Table(name="Empleado")
 @Getter
@@ -76,4 +76,4 @@ public class Empleado extends Persona{
 		private String company;
 
 }
-´´´
+```
