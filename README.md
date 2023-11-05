@@ -12,3 +12,6 @@ Creamos la clase hija y las padres:
 ![image](https://github.com/cpcx04/EJ03-Puzzle-Aronson-Herencia/assets/114216577/e4d11ec0-0109-42c2-9d97-5225a97f21d8)
 
 A la hora de acceder a la base de datos veremos que se crea una Cuenta por cada Cuenta de débito o de crédito, y en las tablas de las entidades hijas se almacenan todos los datos mientras que en la tabla de la entidad padre solamente se almacenan los más generales. 
+
+
+# Mapped Superclass
