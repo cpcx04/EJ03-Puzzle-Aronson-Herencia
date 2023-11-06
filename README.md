@@ -102,6 +102,7 @@ public abstract class Animal {
     // ...
 }
 ```
+
 ##Clase Ave
 
 La clase Ave es una subclase de Animal que representa un tipo específico de animal (ave). Se utiliza la anotación @DiscriminatorValue para indicar el valor del discriminador de tipo correspondiente a esta clase.
