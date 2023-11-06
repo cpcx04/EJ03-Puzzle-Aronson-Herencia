@@ -131,7 +131,7 @@ En este ejemplo, todas las entidades de la jerarquía (Ave y Mamifero) se repres
 
 En la herencia de table per class, para cada clase hija se genera una tabla separada. A diferencia de la joined inheritance, en la table per class no se genera ninguna tabla separada para la clase de entidad principal.
 
-```
+```java
 @Entity
 @Table(
     name = "cliente"
@@ -249,7 +249,7 @@ public class Cliente {
 ```
 Siendo la clase hija de Cliente:
 
-```
+```java
 @Entity
 @Table(
     name = "cliente_vip"
