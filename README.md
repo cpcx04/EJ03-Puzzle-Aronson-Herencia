@@ -85,8 +85,7 @@ En la herencia Single Table, todas las clases o entidades que participan en la j
 Para distinguir entre las diferentes clases en la tabla única, se suele agregar una columna llamada "tipo" o "discriminador" que indica el tipo de entidad representada por cada fila. Esta columna permite diferenciar los registros correspondientes a las diferentes clases y determinar cómo se deben interpretar los datos almacenados en las demás columnas.
 
 Para completar esta herencia hemos decidido realizar una herencia entre el animal,ave y mamifero, teniendo en como clase padre Animal
-Creamos las clases
-# Herencia Single Table en Java
+Creamos las clase.
 
 En este ejemplo de código Java, se muestra cómo implementar la herencia Single Table utilizando la biblioteca de persistencia de Jakarta (anteriormente conocida como Java Persistence API o JPA). La herencia Single Table se utiliza para modelar una jerarquía de clases en una base de datos relacional utilizando una única tabla.
 
