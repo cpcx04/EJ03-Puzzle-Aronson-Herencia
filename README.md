@@ -77,3 +77,51 @@ public class Empleado extends Persona{
 
 }
 ```
+
+# Single Table
+
+En la herencia Single Table, todas las clases o entidades que participan en la jerarquía de herencia se representan en una sola tabla en la base de datos. Esta tabla contiene todas las columnas necesarias para representar los atributos de todas las clases en la jerarquía.
+
+Para distinguir entre las diferentes clases en la tabla única, se suele agregar una columna llamada "tipo" o "discriminador" que indica el tipo de entidad representada por cada fila. Esta columna permite diferenciar los registros correspondientes a las diferentes clases y determinar cómo se deben interpretar los datos almacenados en las demás columnas.
+
+Para completar esta herencia hemos decidido realizar una herencia entre el animal,ave y mamifero, teniendo en como clase padre Animal
+Creamos las clases
+# Herencia Single Table en Java
+
+En este ejemplo de código Java, se muestra cómo implementar la herencia Single Table utilizando la biblioteca de persistencia de Jakarta (anteriormente conocida como Java Persistence API o JPA). La herencia Single Table se utiliza para modelar una jerarquía de clases en una base de datos relacional utilizando una única tabla.
+
+## Clase Animal
+
+La clase `Animal` es una clase abstracta que sirve como clase base para la jerarquía. Contiene atributos comunes a todas las entidades de la jerarquía, como `numPatas` y `numDientes`. Además, se utiliza la anotación `@Inheritance` para indicar que se utilizará la estrategia Single Table, y `@DiscriminatorColumn` para especificar la columna que se utilizará como discriminador de tipo.
+
+```java
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "Animal_type")
+public abstract class Animal {
+    // ...
+}
+```
+##Clase Ave
+
+La clase Ave es una subclase de Animal que representa un tipo específico de animal (ave). Se utiliza la anotación @DiscriminatorValue para indicar el valor del discriminador de tipo correspondiente a esta clase.
+```java
+
+@Entity
+@DiscriminatorValue("Ave")
+public class Ave extends Animal {
+    // ...
+}
+```
+## Clase Mamifero
+
+La clase Mamifero es otra subclase de Animal que representa otro tipo de animal (mamífero). Al igual que en la clase Ave, se utiliza la anotación @DiscriminatorValue para especificar el valor del discriminador de tipo.
+```java
+
+@Entity
+@DiscriminatorValue("Mamifero")
+public class Mamifero extends Animal {
+    // ...
+}
+```
+En este ejemplo, todas las entidades de la jerarquía (Ave y Mamifero) se representan en la misma tabla de base de datos, con una columna adicional llamada Animal_type que indica el tipo de entidad correspondiente a cada registro.
