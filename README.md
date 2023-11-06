@@ -125,3 +125,155 @@ public class Mamifero extends Animal {
 }
 ```
 En este ejemplo, todas las entidades de la jerarquía (Ave y Mamifero) se representan en la misma tabla de base de datos, con una columna adicional llamada Animal_type que indica el tipo de entidad correspondiente a cada registro.
+
+
+# Table Per Class
+
+En la herencia de table per class, para cada clase hija se genera una tabla separada. A diferencia de la joined inheritance, en la table per class no se genera ninguna tabla separada para la clase de entidad principal.
+
+```
+@Entity
+@Table(
+    name = "cliente"
+)
+@Inheritance(
+    strategy = InheritanceType.TABLE_PER_CLASS
+)
+public class Cliente {
+    @Id
+    @GeneratedValue(
+        strategy = GenerationType.AUTO
+    )
+    @Column(
+        name = "id",
+        nullable = false
+    )
+    private Long id;
+    @Column(
+        name = "nombre"
+    )
+    private String nombre;
+    @Column(
+        name = "apellidos"
+    )
+    private String apellidos;
+    @Column(
+        name = "edad"
+    )
+    private int edad;
+
+    public Cliente(Long id, String nombre, String apellidos, int edad) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.edad = edad;
+    }
+
+    public Cliente() {
+    }
+
+    public static ClienteBuilder builder() {
+        return new ClienteBuilder();
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public String getApellidos() {
+        return this.apellidos;
+    }
+
+    public int getEdad() {
+        return this.edad;
+    }
+
+    public void setId(final Long id) {
+        this.id = id;
+    }
+
+    public void setNombre(final String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellidos(final String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public void setEdad(final int edad) {
+        this.edad = edad;
+    }
+
+    public static class ClienteBuilder {
+        private Long id;
+        private String nombre;
+        private String apellidos;
+        private int edad;
+
+        ClienteBuilder() {
+        }
+
+        public ClienteBuilder id(final Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public ClienteBuilder nombre(final String nombre) {
+            this.nombre = nombre;
+            return this;
+        }
+
+        public ClienteBuilder apellidos(final String apellidos) {
+            this.apellidos = apellidos;
+            return this;
+        }
+
+        public ClienteBuilder edad(final int edad) {
+            this.edad = edad;
+            return this;
+        }
+
+        public Cliente build() {
+            return new Cliente(this.id, this.nombre, this.apellidos, this.edad);
+        }
+
+        public String toString() {
+            return "Cliente.ClienteBuilder(id=" + this.id + ", nombre=" + this.nombre + ", apellidos=" + this.apellidos + ", edad=" + this.edad + ")";
+        }
+    }
+}
+```
+Siendo la clase hija de Cliente:
+
+```
+@Entity
+@Table(
+    name = "cliente_vip"
+)
+public class ClienteVip extends Cliente {
+    @Column(
+        name = "tipo"
+    )
+    private String tipo;
+
+    public ClienteVip(Long id, String nombre, String apellidos, int edad, String tipo) {
+        super(id, nombre, apellidos, edad);
+        this.tipo = tipo;
+    }
+
+    public ClienteVip() {
+    }
+
+    public String getTipo() {
+        return this.tipo;
+    }
+
+    public void setTipo(final String tipo) {
+        this.tipo = tipo;
+    }
+}
+```
