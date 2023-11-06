@@ -21,7 +21,7 @@ A la hora de acceder a la base de datos veremos que se crea una Cuenta por cada 
 
 Ejemplo:
 
-```
+```java
 @MappedSuperclass
 @Getter
 @Setter
@@ -38,7 +38,7 @@ public class Persona {
 
 Con esta Clase Persona nuestra clase Empleado, que hereda de la Clase Persona pasa de verse así:
 
-```
+```java
 @Entity
 @Table(name="Empleado")
 @Getter
@@ -63,7 +63,7 @@ public class Empleado {
 
 A verse así:
 
-```
+```java
 @Entity
 @Table(name="Empleado")
 @Getter
@@ -102,7 +102,7 @@ public abstract class Animal {
 }
 ```
 
-##Clase Ave
+## Clase Ave
 
 La clase Ave es una subclase de Animal que representa un tipo específico de animal (ave). Se utiliza la anotación @DiscriminatorValue para indicar el valor del discriminador de tipo correspondiente a esta clase.
 ```java
